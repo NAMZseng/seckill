@@ -12,12 +12,12 @@
   - [codingXiaxw/seckill](https://github.com/codingXiaxw/seckill)
 - ### 相关知识文章链接
     - 枚举类型 相关 
-        - [IBM社区博客](https://www.ibm.com/developerworks/cn/java/j-lo-enum/index.html)
-
-        - [简书博客](https://www.jianshu.com/p/46dbd930f6a2)
+       - [IBM社区博客](https://www.ibm.com/developerworks/cn/java/j-lo-enum/index.html)
+       - [简书博客](https://www.jianshu.com/p/46dbd930f6a2)
     - RESTful 相关
       - [思否博客_RESTful API 设计规范](https://segmentfault.com/a/1190000015384373#restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83)
-            ​    
+   -   xml文件定义 
+        - [关于XML文档的xmlns、xmlns:xsi和xsi:schemaLocation](https://my.oschina.net/itblog/blog/390001)
 
 
 ##  2.所遇问题
