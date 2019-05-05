@@ -13,10 +13,12 @@
 
 ##  2.所遇问题
    - ### maven项目创建问题
-     <div align=center>
-        <img width="350" height="350" src="https://github.com/NAMZseng/seckill/raw/master/readme_img/maven项目选择.png"/>
+     <div>
+        <img width="450" height="450" src="https://github.com/NAMZseng/seckill/raw/master/readme_img/maven项目选择.png"/>
      </div>
   - ### Tomcat Application context设置问题
-	 ![Application contest设置](https://github.com/NAMZseng/seckill/raw/master/readme_img/Application_Contest设置.png)
+	<div>
+        <img width="450" height="450" src="https://github.com/NAMZseng/seckill/raw/master/readme_img/Application_Contest设置.png"/>
+     </div>
 	 
 
