@@ -40,8 +40,8 @@ var seckill = {
             //验证手机号
             if (!seckill.validatePhone(userPhone)) {
                 //绑定手机 控制输出
-                var killPhoneModal = $('#killPhoneModal');
-                killPhoneModal.modal({
+                var userPhoneModal = $('#userPhoneModal');
+                userPhoneModal.modal({
                     // 显示弹出层
                     show: true,
                     // 禁止位置关闭
@@ -50,17 +50,18 @@ var seckill = {
                     keyboard: false
                 });
 
-                $('#killPhoneBtn').click(function () {
-                    var inputPhone = $('#killPhoneKey').val();
+                $('#userPhoneBtn').click(function () {
+                    var inputPhone = $('#userPhoneKey').val();
                     console.log("inputPhone: " + inputPhone);
                     if (seckill.validatePhone(inputPhone)) {
                         // 电话写入cookie(7天过期)
+                        // 同时规定手机号cookie存放的路径为当前项目，减少Web服务器的负载
                         $.cookie('userPhone', inputPhone, {expires: 7, path: '/seckill'});
                         // 验证通过，刷新页面
                         window.location.reload();
                     } else {
                         // TODO 错误文案信息抽取到前端字典里
-                        $('#killPhoneMessage')
+                        $('#userPhoneMessage')
                             .hide()
                             .html('<label class="label label-danger">手机号错误!</label>')
                             .show(300);

@@ -24,10 +24,8 @@
     </div>
 </div>
 <%--登录弹出层 输入电话--%>
-<div id="killPhoneModal" class="modal fade">
-
+<div id="userPhoneModal" class="modal fade">
     <div class="modal-dialog">
-
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title text-center">
@@ -38,7 +36,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-xs-8 col-xs-offset-2">
-                        <input type="text" name="killPhone" id="killPhoneKey"
+                        <input type="text" name="userPhone" id="userPhoneKey"
                                placeholder="请填写手机号^-^" class="form-control">
                     </div>
                 </div>
@@ -46,8 +44,8 @@
 
             <div class="modal-footer">
                 <%--验证信息--%>
-                <span id="killPhoneMessage" class="glyphicon"> </span>
-                <button type="button" id="killPhoneBtn" class="btn btn-success">
+                <span id="userPhoneMessage" class="glyphicon"> </span>
+                <button type="button" id="userPhoneBtn" class="btn btn-success">
                     <span class="glyphicon glyphicon-phone"></span>
                     Submit
                 </button>
@@ -67,7 +65,7 @@
 <%--jQuery countDown倒计时插件--%>
 <script src="http://cdn.bootcss.com/jquery.countdown/2.1.0/jquery.countdown.min.js"></script>
 
-<script src="/resource/script/seckill.js" type="text/javascript"></script>
+<script src="/resources/script/seckill.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(function () {
