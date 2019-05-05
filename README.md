@@ -13,8 +13,8 @@
 
 ##  2.所遇问题
    - ### maven项目创建问题
-	 ![maven项目选择](https://github.com/NAMZseng/seckill/tree/master/readme_img/maven项目选择.png?raw=true)
+	 ![maven项目选择](https://github.com/NAMZseng/seckill/raw/master/readme_img/maven项目选择.png)
   - ### Tomcat Application context设置问题
-	 ![Application contest设置](https://github.com/NAMZseng/seckill/tree/master/readme_img/Application_Contest设置.png.png?raw=true)
+	 ![Application contest设置](https://github.com/NAMZseng/seckill/raw/master/readme_img/Application_Contest设置.png.png)
 	 
 
