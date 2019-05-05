@@ -60,7 +60,7 @@ var seckill = {
                         // 验证通过，刷新页面
                         window.location.reload();
                     } else {
-                        // TODO 错误文案信息抽取到前端字典里
+                        // 错误文案信息可以抽取到前端字典里
                         $('#userPhoneMessage')
                             .hide()
                             .html('<label class="label label-danger">手机号错误!</label>')
@@ -157,5 +157,4 @@ var seckill = {
             seckill.handlerSeckill(seckillId, seckillBox);
         }
     }
-
 }

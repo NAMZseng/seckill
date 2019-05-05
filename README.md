@@ -17,7 +17,7 @@
     - RESTful 相关
       - [思否博客_RESTful API 设计规范](https://segmentfault.com/a/1190000015384373#restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83)
    -   xml文件定义 
-          -   [OSChina博客_关于XML文档的xmlns、xmlns:xsi和xsi:schemaLocation](https://my.oschina.net/itblog/blog/390001)
+          - [OSChina博客_关于XML文档的xmlns、xmlns:xsi和xsi:schemaLocation](https://my.oschina.net/itblog/blog/390001)
 
 
 ##  2.所遇问题

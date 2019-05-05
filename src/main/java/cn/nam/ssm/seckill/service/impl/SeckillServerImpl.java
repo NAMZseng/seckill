@@ -53,7 +53,6 @@ public class SeckillServerImpl implements SeckillService {
     @Override
     public List<Seckill> getSeckillList() {
         // 系统初始时只插入了4条秒杀商品记录
-        // TODO 后期优化，动态确定秒杀商品总类型数
         return seckillDao.queryAll(0, 4);
     }
 
