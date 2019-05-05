@@ -50,16 +50,19 @@ public class SeckillServerImpl implements SeckillService {
     @Autowired
     private SuccessKilledDao successKilledDao;
 
+    @Override
     public List<Seckill> getSeckillList() {
         // 系统初始时只插入了4条秒杀商品记录
         // TODO 后期优化，动态确定秒杀商品总类型数
         return seckillDao.queryAll(0, 4);
     }
 
+    @Override
     public Seckill getById(long seckillId) {
         return seckillDao.queryById(seckillId);
     }
 
+    @Override
     public Exposer exportSeckillUrl(long seckillId) {
         Seckill seckill = seckillDao.queryById(seckillId);
 
@@ -79,6 +82,7 @@ public class SeckillServerImpl implements SeckillService {
         return new Exposer(true, md5, seckillId);
     }
 
+    @Override
     @Transactional(rollbackFor = SeckillException.class)
     public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
             throws SeckillException, RepeatKillException, SeckillCloseException {

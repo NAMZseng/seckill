@@ -37,18 +37,6 @@ public enum SeckillStateEnum {
         this.info = info;
     }
 
-    public static SeckillStateEnum stateof(int index) {
-        for (SeckillStateEnum state : values()) {
-            if ( state.getState() == index) {
-                // TODO stateof方法目的及细节？
-                return state;
-            }
-
-        }
-        return null;
-    }
-
-
     public int getState() {
         return state;
     }

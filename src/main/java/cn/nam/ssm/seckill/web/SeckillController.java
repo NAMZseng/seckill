@@ -34,6 +34,7 @@ public class SeckillController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
+
         // TODO Model?
         List<Seckill> list = seckillService.getSeckillList();
         model.addAttribute("list", list);
@@ -68,10 +69,10 @@ public class SeckillController {
         SeckillResult<Exposer> result;
         try {
             Exposer exposer = seckillService.exportSeckillUrl(seckillId);
-            result = new SeckillResult<Exposer>(true, exposer);
+            result = new SeckillResult<>(true, exposer);
         } catch (Exception e) {
             e.printStackTrace();
-            result = new SeckillResult<Exposer>(false, e.getMessage());
+            result = new SeckillResult<>(false, e.getMessage());
         }
 
         return result;
@@ -87,25 +88,25 @@ public class SeckillController {
             @CookieValue(value = "userPhone", required = false) Long userPhone) {
 
         if (userPhone == null) {
-            return new SeckillResult<SeckillExecution>(false, "未注册");
+            return new SeckillResult<>(false, "未注册");
         }
 
         try {
             SeckillExecution successExecution =
                     seckillService.executeSeckill(seckillId, userPhone, md5);
-            return new SeckillResult<SeckillExecution>(true, successExecution);
+            return new SeckillResult<>(true, successExecution);
         } catch (RepeatKillException e1) {
             SeckillExecution repeatExecution = new
                     SeckillExecution(seckillId, SeckillStateEnum.REPEAT_KILL);
-            return new SeckillResult<SeckillExecution>(true, repeatExecution);
+            return new SeckillResult<>(true, repeatExecution);
         } catch (SeckillCloseException e2) {
             SeckillExecution endExecution = new
                     SeckillExecution(seckillId, SeckillStateEnum.END);
-            return new SeckillResult<SeckillExecution>(true, endExecution);
+            return new SeckillResult<>(true, endExecution);
         } catch (Exception e) {
             SeckillExecution innerErrorExecution = new
                     SeckillExecution(seckillId, SeckillStateEnum.INNER_ERROR);
-            return new SeckillResult<SeckillExecution>(true, innerErrorExecution);
+            return new SeckillResult<>(true, innerErrorExecution);
         }
     }
 
@@ -113,7 +114,7 @@ public class SeckillController {
     @ResponseBody
     public SeckillResult<Long> getCurrentTime() {
         Date now = new Date();
-        return new SeckillResult<Long>(true, now.getTime());
+        return new SeckillResult<>(true, now.getTime());
     }
 
 }

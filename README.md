@@ -8,8 +8,18 @@
     - [Java高并发秒杀API之web层](https://www.imooc.com/learn/630)
     - [Java高并发秒杀API之高并发优化](https://www.imooc.com/learn/632)
 - ###  代码参考链接
-	- [ChaoZeyi/seckill](https://github.com/ChaoZeyi/seckill)
-	- [codingXiaxw/seckill](https://github.com/codingXiaxw/seckill)
+  - [ChaoZeyi/seckill](https://github.com/ChaoZeyi/seckill)
+  - [codingXiaxw/seckill](https://github.com/codingXiaxw/seckill)
+- ### 相关知识文章链接
+    - 枚举类型 相关 
+        - [IBM社区博客](https://www.ibm.com/developerworks/cn/java/j-lo-enum/index.html)
+
+        - [简书博客](https://www.jianshu.com/p/46dbd930f6a2)
+    - RESTful 相关
+      - [思否博客_RESTful API 设计规范](https://segmentfault.com/a/1190000015384373#restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83)
+
+            ​    
+
 
 ##  2.所遇问题
    - ### maven项目创建问题
