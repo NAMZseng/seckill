@@ -29,7 +29,7 @@ import java.util.List;
  * @author Nanrong Zeng
  * @version 1.0
  */
-@Service
+@Service("SeckillServerImpl")
 public class SeckillServerImpl implements SeckillService {
 
     /**
@@ -66,8 +66,9 @@ public class SeckillServerImpl implements SeckillService {
     }
 
     /**
-     * 获取商品秒杀端口
+     * 获取商品秒杀操作入口
      * 使用redis进行缓存优化
+     *
      * @param seckillId
      * @return
      */

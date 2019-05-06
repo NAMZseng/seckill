@@ -18,30 +18,40 @@ import java.util.List;
 
 /**
  * 前端页面操作控制模块
- * 其他相关注解@Component @Service @Dao @Controller
  * 使用restul风格的url模块/资源/{}/细分
  *
  * @author Nanrong Zeng
  * @version 1.0
  */
 
-@Component
+@Component("SeckillController")
 @RequestMapping("/seckill")
 public class SeckillController {
 
     @Autowired
     private SeckillService seckillService;
 
+    /**
+     * 获取秒杀商品列表页
+     *
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
-
-        // TODO Model?
         List<Seckill> list = seckillService.getSeckillList();
         model.addAttribute("list", list);
         // 访问的是/WEB-INF/jps/list.jsp
         return "list";
     }
 
+    /**
+     * 获取某一商品的秒杀详情页
+     *
+     * @param seckillId
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/{seckillId}/detail", method = RequestMethod.GET)
     public String detail(@PathVariable("seckillId") Long seckillId, Model model) {
         if (seckillId == null) {
@@ -51,8 +61,8 @@ public class SeckillController {
 
         Seckill seckill = seckillService.getById(seckillId);
         if (seckill == null) {
-            // TODO forward?
-            return "forward:/seckill/list";
+            // id无效，重新返回list页面
+            return "redirect:/seckill/list";
         }
 
         model.addAttribute("seckill", seckill);
@@ -60,8 +70,13 @@ public class SeckillController {
         return "detail";
     }
 
-    @RequestMapping(value = "/{seckillId}/exposer",
-            method = RequestMethod.GET,
+    /**
+     * 获取商品秒杀操作详情地址(md5)
+     *
+     * @param seckillId
+     * @return 秒杀开始，返回秒杀操作入口；秒杀未开始，返回系统时间和秒杀时间
+     */
+    @RequestMapping(value = "/{seckillId}/exposer", method = RequestMethod.GET,
             produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public SeckillResult<Exposer> exposer(@PathVariable("seckillId") Long seckillId) {
@@ -78,8 +93,15 @@ public class SeckillController {
         return result;
     }
 
-    @RequestMapping(value = "/{seckillId}/{md5}/execution",
-            method = RequestMethod.POST,
+    /**
+     * 执行秒杀
+     *
+     * @param seckillId
+     * @param md5 md5加密的秒杀地址段
+     * @param userPhone
+     * @return 秒杀成功，返回包含秒杀明细对象的SeckillResult; 否则，返回错误信息
+     */
+    @RequestMapping(value = "/{seckillId}/{md5}/execution", method = RequestMethod.POST,
             produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public SeckillResult<SeckillExecution> execute(
@@ -110,6 +132,11 @@ public class SeckillController {
         }
     }
 
+    /**
+     * 获取系统当前时间
+     *
+     * @return
+     */
     @RequestMapping(value = "/time/now", method = RequestMethod.GET)
     @ResponseBody
     public SeckillResult<Long> getCurrentTime() {

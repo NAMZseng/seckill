@@ -2,7 +2,7 @@ package cn.nam.ssm.seckill.dto;
 
 /**
  * service层与web层的数据传输对象
- * 暴露秒杀地址(接口）,当秒杀未开始时，返回系统时间和秒杀时间
+ * 秒杀开始，返回秒杀操作入口；秒杀未开始，返回系统时间和秒杀时间
  *
  * @author Nanrong Zeng
  * @version 1.0
@@ -34,11 +34,22 @@ public class Exposer {
      */
     private long endTime;
 
+    /**
+     * 当商品ID无效时,直接设exposed为false
+     * @param exposed
+     * @param seckillId
+     */
     public Exposer(boolean exposed, long seckillId) {
         this.exposed = exposed;
         this.seckillId = seckillId;
     }
 
+    /**
+     * 秒杀开启时，暴露
+     * @param exposed
+     * @param md5
+     * @param seckillId
+     */
     public Exposer(boolean exposed, String md5, long seckillId) {
         this.exposed = exposed;
         this.md5 = md5;
@@ -46,7 +57,7 @@ public class Exposer {
     }
 
     /**
-     * 秒杀为开始，返回系统时间和秒杀时间
+     * 秒杀未开始，返回系统时间和秒杀时间
      *
      * @param exposed 未开启秒杀
      * @param seckillId 商品ID
