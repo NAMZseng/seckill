@@ -2,6 +2,7 @@ package cn.nam.ssm.seckill.service.impl;
 
 import cn.nam.ssm.seckill.dao.SeckillDao;
 import cn.nam.ssm.seckill.dao.SuccessKilledDao;
+import cn.nam.ssm.seckill.dao.cache.RedisDao;
 import cn.nam.ssm.seckill.dto.Exposer;
 import cn.nam.ssm.seckill.dto.SeckillExecution;
 import cn.nam.ssm.seckill.entiy.Seckill;
@@ -50,6 +51,9 @@ public class SeckillServerImpl implements SeckillService {
     @Autowired
     private SuccessKilledDao successKilledDao;
 
+    @Autowired
+    private RedisDao redisDao;
+
     @Override
     public List<Seckill> getSeckillList() {
         // 系统初始时只插入了4条秒杀商品记录
@@ -61,9 +65,27 @@ public class SeckillServerImpl implements SeckillService {
         return seckillDao.queryById(seckillId);
     }
 
+    /**
+     * 获取商品秒杀端口
+     * 使用redis进行缓存优化
+     * @param seckillId
+     * @return
+     */
     @Override
     public Exposer exportSeckillUrl(long seckillId) {
-        Seckill seckill = seckillDao.queryById(seckillId);
+
+        Seckill seckill = redisDao.getSeckill(seckillId);
+        if (seckill == null) {
+            // 若redeis缓存没有，则从数据库中获取
+            seckill = seckillDao.queryById(seckillId);
+            if (seckill == null) {
+                // 访问seckillId无效
+                return new Exposer(false, seckillId);
+            } else {
+                // 将新数据存入缓存
+                redisDao.putSeckill(seckill);
+            }
+        }
 
         Date startTime = seckill.getStartTime();
         Date endTime = seckill.getEndTime();
@@ -86,24 +108,17 @@ public class SeckillServerImpl implements SeckillService {
     public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
             throws SeckillException, RepeatKillException, SeckillCloseException {
 
-        /*
-         * 使用注解控制事务方法的优点:
-         * 1.开发团队达成一致约定，明确标注事务方法的编程风格
-         * 2.保证事务方法的执行时间尽可能短，
-         *   不要穿插其他网络操作RPC/HTTP请求或者剥离到事务方法外部
-         * 3.不是所有的方法都需要事务，如只有一条修改操作、只读操作不要事务控制
-         */
-
         if (md5 == null || !getMd5(seckillId).equals(md5)) {
             // 秒杀数据被重写
             throw new SeckillException("seckill data rewrited");
         }
 
-        //执行秒杀逻辑:减库存+增加购买明细
-
-        int insetCount = successKilledDao.insertSuccessKilled(seckillId, userPhone);
-
+        // 执行秒杀逻辑:减库存+增加购买明细
+        // 由于减库存操作是通过id+phone为主码，可直接控制重复减库存的操作，
+        // 将其放置添加购物明细操作前可减小网络延迟以及JVM GC操作带来的延迟
+        // 若添加商品明细在前，则延迟将多近一倍
         try {
+            int insetCount = successKilledDao.insertSuccessKilled(seckillId, userPhone);
             if (insetCount <= 0) {
                 // 用户重复秒杀同一商品
                 throw new RepeatKillException("seckill was repeated");
@@ -118,8 +133,8 @@ public class SeckillServerImpl implements SeckillService {
                     //秒杀成功,得到成功插入的明细记录,并返回成功秒杀的信息 commit
                     SuccessKilled successKilled =
                             successKilledDao.queryByIdWithSeckill(seckillId, userPhone);
-                    return new SeckillExecution(seckillId, SeckillStateEnum.SUCCESS,
-                                    successKilled);
+                    return new SeckillExecution(seckillId,
+                            SeckillStateEnum.SUCCESS, successKilled);
                 }
             }
         } catch (SeckillCloseException e1) {

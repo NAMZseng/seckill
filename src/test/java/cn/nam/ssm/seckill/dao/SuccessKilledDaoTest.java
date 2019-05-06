@@ -21,7 +21,7 @@ public class SuccessKilledDaoTest {
     private SuccessKilledDao successKilledDao;
 
     @Test
-    public void testInsertSuccessKilled() throws Exception {
+    public void testInsertSuccessKilled() {
 
         long seckillId = 1001L;
         long userPhone = 13476191877L;
@@ -31,7 +31,7 @@ public class SuccessKilledDaoTest {
     }
 
     @Test
-    public void testQueryByIdWithSeckill() throws Exception {
+    public void testQueryByIdWithSeckill() {
         long seckillId = 1001L;
         long userPhone = 13476191877L;
         SuccessKilled successKilled = successKilledDao

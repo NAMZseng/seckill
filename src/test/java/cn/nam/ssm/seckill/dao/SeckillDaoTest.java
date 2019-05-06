@@ -27,7 +27,7 @@ public class SeckillDaoTest {
     private SeckillDao seckillDao;
 
     @Test
-    public void testQuyById() throws Exception {
+    public void testQuyById() {
         long seckillId = 1000;
         Seckill seckill = seckillDao.queryById(seckillId);
         System.out.println(seckill.getName());
@@ -35,7 +35,7 @@ public class SeckillDaoTest {
     }
 
     @Test
-    public void testQueryAll() throws Exception {
+    public void testQueryAll() {
         List<Seckill> seckills = seckillDao.queryAll(0, 100);
         for (Seckill seckill : seckills) {
             System.out.println(seckill);
@@ -43,7 +43,7 @@ public class SeckillDaoTest {
     }
 
     @Test
-    public void testReduceNumber() throws Exception {
+    public void testReduceNumber() {
         long seckillId = 1001;
         Date date = new Date();
         int updateCount = seckillDao.reduceNumber(seckillId, date);
