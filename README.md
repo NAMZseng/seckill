@@ -27,7 +27,8 @@
          <img width="450" height="450" src="https://github.com/NAMZseng/seckill/raw/master/readme_img/seckill执行流程.png"/>
        </div>
    - ### 项目文档
-    	 - [javadoc](https://github.com/NAMZseng/seckill/raw/master/doc/index.html)
+    	  [javadoc](https://github.com/NAMZseng/seckill/raw/master/doc/index.html)
+	  
     
 ##  3.所遇问题
    - ### maven项目创建问题
