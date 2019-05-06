@@ -7,7 +7,8 @@
     - [Java高并发秒杀API之Service层](https://www.imooc.com/learn/631)
     - [Java高并发秒杀API之web层](https://www.imooc.com/learn/630)
     - [Java高并发秒杀API之高并发优化](https://www.imooc.com/learn/632)
-- ###  代码参考链接
+    - [讲师课程源码](https://github.com/geekyijun/seckill)
+- ###  其他代码参考链接
   - [ChaoZeyi/seckill](https://github.com/ChaoZeyi/seckill)
   - [codingXiaxw/seckill](https://github.com/codingXiaxw/seckill)
 - ### 相关知识文章链接
