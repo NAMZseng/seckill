@@ -22,10 +22,9 @@
       
       
 ##  2.项目整体逻辑流程图
-
-      <div>
-        <img width="450" height="450" src="https://github.com/NAMZseng/seckill/raw/master/readme_img/seckill执行流程.png"/>
-     </div>
+   <div>
+      <img width="450" height="450" src="https://github.com/NAMZseng/seckill/raw/master/readme_img/seckill执行流程.png"/>
+   </div>
      
 ##  3.所遇问题
    - ### maven项目创建问题
