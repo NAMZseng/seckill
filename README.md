@@ -18,17 +18,23 @@
     - RESTful 相关
       - [思否博客_RESTful API 设计规范](https://segmentfault.com/a/1190000015384373#restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83)
    -   xml文件定义 
-          -   [OSCHINA博客_关于XML文档的xmlns、xmlns:xsi和xsi:schemaLocation](https://my.oschina.net/itblog/blog/390001)
+          -    [OSCHINA博客_关于XML文档的xmlns、xmlns:xsi和xsi:schemaLocation](https://my.oschina.net/itblog/blog/390001)
+      
+      
+##  2.项目整体逻辑流程图
 
-
-##  2.所遇问题
+      <div>
+        <img width="450" height="450" src="https://github.com/NAMZseng/seckill/raw/master/readme_img/seckill执行流程.png"/>
+     </div>
+     
+##  3.所遇问题
    - ### maven项目创建问题
      <div>
         <img width="450" height="450" src="https://github.com/NAMZseng/seckill/raw/master/readme_img/maven项目选择.png"/>
      </div>
+    
   - ### Tomcat Application context设置问题
 	<div>
         <img width="450" height="450" src="https://github.com/NAMZseng/seckill/raw/master/readme_img/Application_Contest设置.png"/>
      </div>
-	 
-
+	
