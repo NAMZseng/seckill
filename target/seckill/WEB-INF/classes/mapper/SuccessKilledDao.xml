@@ -13,7 +13,7 @@
 
     <select id="queryByIdWithSeckill" resultType="SuccessKilled">
         <!--根据seckillId查询SuccessKilled对象，并携带Seckill对象-->
-
+        <!--inner join 取交集-->
         select
             sk.seckill_id,
             sk.user_phone,
